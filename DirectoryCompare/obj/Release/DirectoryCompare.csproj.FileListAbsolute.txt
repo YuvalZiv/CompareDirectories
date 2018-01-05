@@ -1,0 +1,8 @@
+C:\Users\Yuval\Desktop\DirectoryCompare\DirectoryCompare\obj\Release\DirectoryCompare.MainForm.resources
+C:\Users\Yuval\Desktop\DirectoryCompare\DirectoryCompare\obj\Release\DirectoryCompare.Properties.Resources.resources
+C:\Users\Yuval\Desktop\DirectoryCompare\DirectoryCompare\obj\Release\DirectoryCompare.csproj.GenerateResource.Cache
+C:\Users\Yuval\Desktop\DirectoryCompare\DirectoryCompare\bin\Release\DirectoryCompare.exe.config
+C:\Users\Yuval\Desktop\DirectoryCompare\DirectoryCompare\bin\Release\DirectoryCompare.exe
+C:\Users\Yuval\Desktop\DirectoryCompare\DirectoryCompare\bin\Release\DirectoryCompare.pdb
+C:\Users\Yuval\Desktop\DirectoryCompare\DirectoryCompare\obj\Release\DirectoryCompare.exe
+C:\Users\Yuval\Desktop\DirectoryCompare\DirectoryCompare\obj\Release\DirectoryCompare.pdb

@@ -7,3 +7,12 @@ C:\Users\Yuval\Desktop\FolderComapre\FolderComapre\obj\Debug\WindowsFormsApplica
 C:\Users\Yuval\Desktop\FolderComapre\FolderComapre\obj\Debug\DirectoryCompare.csproj.GenerateResource.Cache
 C:\Users\Yuval\Desktop\FolderComapre\FolderComapre\obj\Debug\WindowsFormsApplication1.exe
 C:\Users\Yuval\Desktop\FolderComapre\FolderComapre\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\Yuval\Desktop\DirectoryCompare\DirectoryCompare\obj\Debug\DirectoryCompare.csprojResolveAssemblyReference.cache
+C:\Users\Yuval\Desktop\DirectoryCompare\DirectoryCompare\obj\Debug\DirectoryCompare.csproj.GenerateResource.Cache
+C:\Users\Yuval\Desktop\DirectoryCompare\DirectoryCompare\obj\Debug\DirectoryCompare.MainForm.resources
+C:\Users\Yuval\Desktop\DirectoryCompare\DirectoryCompare\obj\Debug\DirectoryCompare.Properties.Resources.resources
+C:\Users\Yuval\Desktop\DirectoryCompare\DirectoryCompare\bin\Debug\DirectoryCompare.exe.config
+C:\Users\Yuval\Desktop\DirectoryCompare\DirectoryCompare\bin\Debug\DirectoryCompare.exe
+C:\Users\Yuval\Desktop\DirectoryCompare\DirectoryCompare\bin\Debug\DirectoryCompare.pdb
+C:\Users\Yuval\Desktop\DirectoryCompare\DirectoryCompare\obj\Debug\DirectoryCompare.exe
+C:\Users\Yuval\Desktop\DirectoryCompare\DirectoryCompare\obj\Debug\DirectoryCompare.pdb

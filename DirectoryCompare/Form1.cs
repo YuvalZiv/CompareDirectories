@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-namespace WindowsFormsApplication1
+namespace DirectoryCompare
 {
     public partial class MainForm : Form
     {
@@ -57,7 +57,7 @@ namespace WindowsFormsApplication1
             List<string> existsInFirstOnly = new List<string>();
             List<string> existsInSecondOnly = new List<string>();
             CompareTwoLists(FirstDirectoryPath.Text, SecondDirectoryPath.Text, TreeFolder(FirstDirectoryPath.Text), TreeFolder(SecondDirectoryPath.Text), ref existsInBoth, ref existsInFirstOnly, ref existsInSecondOnly);
-            ShowCompare(existsInBoth, existsInFirstOnly, existsInSecondOnly);
+            ShowComparison(existsInBoth, existsInFirstOnly, existsInSecondOnly);
         }
 
         private void ShowStats(string firstDirectoryPath, string secondDirectoryPath)
@@ -110,14 +110,25 @@ namespace WindowsFormsApplication1
             return files;
         }
 
-        private void CompareTwoLists(string firstDirectoryParent, string secondDirectoryParent, List<string> firstDirectoryTree, List<string> secondDirectoryTree, ref List<string> existsInBoth, ref List<string> existsInFirst, ref List<string> existsInSecond)
+        private void CompareTwoLists(string firstDirectoryParent, string secondDirectoryParent, List<string> firstDirectoryTree, List<string> secondDirectoryTree, ref List<string> existsInBoth, ref List<string> existsInFirst, ref List<string> existsInSecond, bool compareData = false)
         {
             foreach (string file in firstDirectoryTree)
             {
-                if (secondDirectoryTree.Contains(file) && CompareTwoFiles(firstDirectoryParent + file, secondDirectoryParent + file))
+                if (secondDirectoryTree.Contains(file))
                 {
-                    secondDirectoryTree.Remove(file);
-                    existsInBoth.Add(file);
+                    if (compareData)
+                    {
+                        if (CompareTwoFiles(firstDirectoryParent + file, secondDirectoryParent + file))
+                        {
+                            secondDirectoryTree.Remove(file);
+                            existsInBoth.Add(file);
+                        }
+                    }
+                    else
+                    {
+                        secondDirectoryTree.Remove(file);
+                        existsInBoth.Add(file);
+                    }
                 }
                 else
                 {
@@ -169,7 +180,7 @@ namespace WindowsFormsApplication1
             return true;
         }
 
-        private void ShowCompare(List<string> existsInBoth, List<string> existsInFirstOnly, List<string> existsInSecondOnly)
+        private void ShowComparison(List<string> existsInBoth, List<string> existsInFirstOnly, List<string> existsInSecondOnly)
         {
             FoundOutput.Text = String.Format(FoundOutputFormat, String.Join("\r\n- ", existsInBoth));
             NotFoundOutput.Text = String.Format(NotFoundOutputFormat, String.Join("\r\n- ", existsInFirstOnly), String.Join("\r\n- ", existsInSecondOnly));

@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace DirectoryCompare
 {
     partial class MainForm
     {
@@ -147,7 +147,7 @@
             this.Controls.Add(this.SecondDirectoryPath);
             this.Controls.Add(this.FirstDirectoryPath);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Directory Compare";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
