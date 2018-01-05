@@ -1,0 +1,9 @@
+C:\Users\Yuval\Desktop\FolderComapre\FolderComapre\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\Yuval\Desktop\FolderComapre\FolderComapre\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\Yuval\Desktop\FolderComapre\FolderComapre\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\Yuval\Desktop\FolderComapre\FolderComapre\obj\Debug\DirectoryCompare.csprojResolveAssemblyReference.cache
+C:\Users\Yuval\Desktop\FolderComapre\FolderComapre\obj\Debug\WindowsFormsApplication1.MainForm.resources
+C:\Users\Yuval\Desktop\FolderComapre\FolderComapre\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\Yuval\Desktop\FolderComapre\FolderComapre\obj\Debug\DirectoryCompare.csproj.GenerateResource.Cache
+C:\Users\Yuval\Desktop\FolderComapre\FolderComapre\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\Yuval\Desktop\FolderComapre\FolderComapre\obj\Debug\WindowsFormsApplication1.pdb
