@@ -71,7 +71,7 @@
                  ToolTipService.ShowDuration="5000" ToolTipService.BetweenShowDelay="100"
                  Checked="CompareFilesData_Changed" Unchecked="CompareFilesData_Changed"/>
         <CheckBox Name="CompareStructure" Content="Compare Structure" HorizontalAlignment="Left"
-                 VerticalAlignment="Bottom" Margin="164,0,0,232"
+                 VerticalAlignment="Top" Margin="164,62,0,0"
                  ToolTip="Doesn't compare the structure of the files.
                  &#x0a;Compare structure checks that every file in both directories is in the same partial path" 
                  ToolTipService.InitialShowDelay="100"

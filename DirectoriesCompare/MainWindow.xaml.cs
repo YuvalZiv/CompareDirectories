@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.IO;
+using NLog;
 
 namespace DirectoriesCompare
 {
@@ -29,8 +22,8 @@ namespace DirectoriesCompare
         #endregion ToolTip Consts
         #region TextBox Consts
         private const string SummaryFormat = "{0}:\r\nFiles - {1}\r\nSub Directories - {2}\r\nSize - {3} {4}";
-        private const string FoundOutputFormat = "Found in both directories:\r\n{0}";
-        private const string NotFoundOutputFormat = "Not found in first directory:\r\n{0}\r\n\r\nNot found in second directory:\r\n{1}";
+        private const string FoundOutputFormat = "Found in both directories:\r\n{0}- ";
+        private const string NotFoundOutputFormat = "Not found in first directory:\r\n- {0}\r\n\r\nNot found in second directory:\r\n- {1}";
         private const string ConclustionExistsAll = "All {0} files exists in both directories.";
         private const string ConclustionNotAllExists = "{0} files from the first directory are missing in the second directory.\r\n{1} files from the second directory are missing in the first directory.";
         private readonly string[] ByteMagnitude = { "B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
@@ -39,6 +32,7 @@ namespace DirectoriesCompare
 
         System.Windows.Forms.FolderBrowserDialog folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
         private Dictionary<Button, Tuple<TextBox, TextBox>> BrowseButtonMatchingData = new Dictionary<Button, Tuple<TextBox, TextBox>>();
+        private static Logger logger = LogManager.GetCurrentClassLogger();
 
         public MainWindow()
         {
@@ -72,7 +66,10 @@ namespace DirectoriesCompare
         private void GetStats(string folderPath, ref long sizeInBytes, ref int subDirectoriesCount, ref int filesCount)
         {
             if (!(Directory.Exists(folderPath)))
-                MessageBox.Show("Unknown directory at " + folderPath);
+            {
+                logger.Error("Unknown directory at " + folderPath);
+                return;
+            }
 
             foreach (string absoluteSubDirectory in Directory.GetDirectories(folderPath))
             {
@@ -81,9 +78,13 @@ namespace DirectoriesCompare
                     GetStats(absoluteSubDirectory, ref sizeInBytes, ref subDirectoriesCount, ref filesCount);
                     subDirectoriesCount++;
                 }
-                catch (UnauthorizedAccessException e)
+                catch (UnauthorizedAccessException cause)
                 {
-                    //Just skip the exeption
+                    logger.Error("Couldn't access directory at " + absoluteSubDirectory, cause);
+                }
+                catch (PathTooLongException cause)
+                {
+                    logger.Error("Couldn't access directory at " + absoluteSubDirectory + " because the path was too long.", cause);
                 }
             }
 
@@ -172,7 +173,7 @@ namespace DirectoriesCompare
                 files.AddRange(TreeFolder(parentDirectoryPath, absoluteSubDirectoryPath));
 
             foreach (string absoluteFilePath in Directory.GetFiles(directoryPath))
-                files.Add(absoluteFilePath.Remove(0, parentDirectoryPath.Length) + 1);
+                files.Add(absoluteFilePath.Remove(0, parentDirectoryPath.Length + 1));
 
             return files;
         }
@@ -205,19 +206,21 @@ namespace DirectoriesCompare
             string firstDirectoryParent, string secondDirectoryParent, bool compareData, bool compareStructure)
         {
             List<string> both = new List<string>(), first = new List<string>(), second = new List<string>();
-            string filePath;
+            int index;
             foreach (string file in firstDirectoryTree)
             {
-                filePath = file;
-                if (!(compareStructure))
-                    filePath = Path.GetFileName(filePath);
-                if (secondDirectoryTree.Contains(filePath))
+                if (Path.GetFileName(file) == "IMG_20160407_153749.jpg")
+                    Console.WriteLine();
+                if ((index = IndexOf(secondDirectoryTree, file, compareStructure)) != -1)
                 {
                     if ((!compareData) || (compareData &&
-                        CompareTwoFiles(Path.Combine(firstDirectoryParent, filePath), Path.Combine(secondDirectoryParent, filePath))))
+                        CompareTwoFiles(Path.Combine(firstDirectoryParent, file), Path.Combine(secondDirectoryParent, secondDirectoryTree[index]))))
                     {
-                        secondDirectoryTree.Remove(filePath);
-                        both.Add(filePath);
+                        secondDirectoryTree.RemoveAt(index);
+                        if (compareStructure)
+                            both.Add(file);
+                        else
+                            both.Add(Path.GetFileName(file));
                     }
                 }
                 else
@@ -232,6 +235,25 @@ namespace DirectoriesCompare
             }
 
             return new Tuple<List<string>, List<string>, List<string>>(both, first, second);
+        }
+
+        private static int IndexOf(List<string> list, string value, bool compareStructure)
+        {
+            if (compareStructure)
+                return list.IndexOf(value);
+
+            string shortVal;
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                shortVal = Path.GetFileName(list[i]);
+                if (shortVal.StartsWith("IMG_20160407"))
+                    Console.WriteLine();
+                if (String.Equals(value, shortVal, StringComparison.OrdinalIgnoreCase))
+                    return i;
+            }
+
+            return -1;
         }
 
         private bool CompareTwoFiles(string firstFilePath, string secondFilePath)

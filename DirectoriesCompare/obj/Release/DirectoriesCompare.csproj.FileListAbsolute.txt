@@ -11,3 +11,5 @@ C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\obj\Release\Directo
 C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\obj\Release\DirectoriesCompare.exe
 C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\obj\Release\DirectoriesCompare.pdb
 C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\obj\Release\DirectoriesCompare.csprojResolveAssemblyReference.cache
+C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\bin\Release\NLog.dll
+C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\bin\Release\NLog.xml

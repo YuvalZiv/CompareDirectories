@@ -23,3 +23,5 @@ C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\obj\Debug\Directori
 C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\obj\Debug\DirectoriesCompare.csproj.GenerateResource.Cache
 C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\obj\Debug\DirectoriesCompare.exe
 C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\obj\Debug\DirectoriesCompare.pdb
+C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\bin\Debug\NLog.dll
+C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\bin\Debug\NLog.xml
