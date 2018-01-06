@@ -1,0 +1,13 @@
+C:\Users\Yuval\Desktop\FilesCompare\FilesCompare\bin\Debug\FilesCompare.exe.config
+C:\Users\Yuval\Desktop\FilesCompare\FilesCompare\bin\Debug\FilesCompare.exe
+C:\Users\Yuval\Desktop\FilesCompare\FilesCompare\bin\Debug\FilesCompare.pdb
+C:\Users\Yuval\Desktop\FilesCompare\FilesCompare\obj\Debug\FilesCompare.csprojResolveAssemblyReference.cache
+C:\Users\Yuval\Desktop\FilesCompare\FilesCompare\obj\Debug\MainWindow.baml
+C:\Users\Yuval\Desktop\FilesCompare\FilesCompare\obj\Debug\MainWindow.g.cs
+C:\Users\Yuval\Desktop\FilesCompare\FilesCompare\obj\Debug\App.g.cs
+C:\Users\Yuval\Desktop\FilesCompare\FilesCompare\obj\Debug\FilesCompare_MarkupCompile.cache
+C:\Users\Yuval\Desktop\FilesCompare\FilesCompare\obj\Debug\FilesCompare.g.resources
+C:\Users\Yuval\Desktop\FilesCompare\FilesCompare\obj\Debug\FilesCompare.Properties.Resources.resources
+C:\Users\Yuval\Desktop\FilesCompare\FilesCompare\obj\Debug\FilesCompare.csproj.GenerateResource.Cache
+C:\Users\Yuval\Desktop\FilesCompare\FilesCompare\obj\Debug\FilesCompare.exe
+C:\Users\Yuval\Desktop\FilesCompare\FilesCompare\obj\Debug\FilesCompare.pdb

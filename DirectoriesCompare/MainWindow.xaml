@@ -1,0 +1,81 @@
+﻿<Window x:Class="DirectoriesCompare.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Directories Compare" Height="340" Width="480" Background="#FFF0F0F0"
+        Loaded="Window_Loaded">
+    <Grid Margin="-2,0,2,0">
+        <TextBox Name="FirstDirectoryPath" HorizontalAlignment="Left"
+                 Height="20" TextWrapping="Wrap" VerticalAlignment="Top"
+                 Width="367" Margin="10,10,0,0"/>
+        <TextBox Name="SecondDirectoryPath" HorizontalAlignment="Left"
+                 Height="20" TextWrapping="Wrap" VerticalAlignment="Top"
+                 Width="367" Margin="10,36,0,0"/>
+        <TextBox Name="Found" HorizontalAlignment="Left" Height="166" TextWrapping="Wrap"
+                 Text="Found Output..." VerticalAlignment="Top" Width="148"
+                 Margin="10,82,0,0" IsReadOnly="True" VerticalScrollBarVisibility="Auto"
+                 ToolTip="Found Output..." ToolTipService.InitialShowDelay="100"
+                 ToolTipService.ShowDuration="5000" ToolTipService.BetweenShowDelay="100">
+            <TextBox.Foreground>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlDarkDarkColorKey}}"/>
+            </TextBox.Foreground>
+        </TextBox>
+        <TextBox Name="NotFound" HorizontalAlignment="Left" Height="166" TextWrapping="Wrap"
+                 Text="Not Found Output..." VerticalAlignment="Top" Width="148"
+                 Margin="164,82,0,0" IsReadOnly="True" VerticalScrollBarVisibility="Auto"
+                 ToolTip="Not Found Output..." ToolTipService.InitialShowDelay="100"
+                 ToolTipService.ShowDuration="5000" ToolTipService.BetweenShowDelay="100">
+            <TextBox.Foreground>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlDarkDarkColorKey}}"/>
+            </TextBox.Foreground>
+        </TextBox>
+        <TextBox Name="FirstSummary" HorizontalAlignment="Left" Height="68" TextWrapping="Wrap" 
+                 Text="First Directory Summary Output..." VerticalAlignment="Top" Width="141"
+                 Margin="317,105,0,0" IsReadOnly="True" VerticalScrollBarVisibility="Auto"
+                 ToolTip="First Directory Summary Output..." ToolTipService.InitialShowDelay="100"
+                 ToolTipService.ShowDuration="5000" ToolTipService.BetweenShowDelay="100">
+            <TextBox.Foreground>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlDarkDarkColorKey}}"/>
+            </TextBox.Foreground>
+        </TextBox>
+        <TextBox x:Name="SecondSummary" HorizontalAlignment="Left" Height="68" TextWrapping="Wrap" 
+                 Text="Second Directory Summary Output..." VerticalAlignment="Top" Width="141" 
+                 Margin="317,179,0,0" IsReadOnly="True" VerticalScrollBarVisibility="Auto"
+                 ToolTip="Second Directory Summary Output..." ToolTipService.InitialShowDelay="100"
+                 ToolTipService.ShowDuration="5000" ToolTipService.BetweenShowDelay="100">
+            <TextBox.Foreground>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlDarkDarkColorKey}}"/>
+            </TextBox.Foreground>
+        </TextBox>
+        <TextBox Name="Conclusion" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" 
+                 Text="Conclusion..." VerticalAlignment="Top" Width="448" Margin="10,253,0,0" 
+                 IsReadOnly="True" ToolTip="Lala" ToolTipService.InitialShowDelay="100"
+                 ToolTipService.ShowDuration="5000" ToolTipService.BetweenShowDelay="100">
+            <TextBox.Foreground>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlDarkDarkColorKey}}"/>
+            </TextBox.Foreground>
+        </TextBox>
+        <Button Name="FirstDirectoryBrowse" Content="Browse..."
+                HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"
+                RenderTransformOrigin="4.933,2.05" Margin="383,10,0,0"
+                Click="Browse_Click"/>
+        <Button Name="SecondDirectoryBrowse" Content="Browse..." 
+                HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"
+                RenderTransformOrigin="4.933,2.05" Margin="383,36,0,0"
+                Click="Browse_Click"/>
+        <Button Name="Compare" Content="Compare" HorizontalAlignment="Left"
+                VerticalAlignment="Top" Width="141" Margin="317,62,0,0" Height="37"
+                Click="Compare_Click"/>
+        <CheckBox Name="CompareFilesData" Content="Compare Data" HorizontalAlignment="Left" 
+                 VerticalAlignment="Top" Margin="10,62,0,0" IsChecked="True"
+                 ToolTip="Compares the data of the files aswell." ToolTipService.InitialShowDelay="100"
+                 ToolTipService.ShowDuration="5000" ToolTipService.BetweenShowDelay="100"
+                 Checked="CompareFilesData_Changed" Unchecked="CompareFilesData_Changed"/>
+        <CheckBox Name="CompareStructure" Content="Compare Structure" HorizontalAlignment="Left"
+                 VerticalAlignment="Bottom" Margin="164,0,0,232"
+                 ToolTip="Doesn't compare the structure of the files.
+                 &#x0a;Compare structure checks that every file in both directories is in the same partial path" 
+                 ToolTipService.InitialShowDelay="100"
+                 ToolTipService.ShowDuration="5000" ToolTipService.BetweenShowDelay="100"
+                 Checked="CompareStructure_Changed" Unchecked="CompareStructure_Changed"/>
+    </Grid>
+</Window>

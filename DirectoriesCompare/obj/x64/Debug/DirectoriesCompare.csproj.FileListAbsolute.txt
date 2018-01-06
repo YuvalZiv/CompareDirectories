@@ -1,0 +1,12 @@
+C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\bin\x64\Debug\DirectoriesCompare.exe.config
+C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\bin\x64\Debug\DirectoriesCompare.exe
+C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\bin\x64\Debug\DirectoriesCompare.pdb
+C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\obj\x64\Debug\MainWindow.baml
+C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\obj\x64\Debug\MainWindow.g.cs
+C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\obj\x64\Debug\App.g.cs
+C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\obj\x64\Debug\DirectoriesCompare_MarkupCompile.cache
+C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\obj\x64\Debug\DirectoriesCompare.g.resources
+C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\obj\x64\Debug\DirectoriesCompare.Properties.Resources.resources
+C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\obj\x64\Debug\DirectoriesCompare.csproj.GenerateResource.Cache
+C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\obj\x64\Debug\DirectoriesCompare.exe
+C:\Users\Yuval\Desktop\DirectoriesCompare\DirectoriesCompare\obj\x64\Debug\DirectoriesCompare.pdb
