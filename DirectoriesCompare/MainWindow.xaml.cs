@@ -11,7 +11,6 @@ namespace DirectoriesCompare
     public partial class MainWindow : Window
     {
         #region Consts
-        private const int BytesToRead = sizeof(Int64);
         #region ToolTip Consts
         private const string CompareDataCheckedToolTipData = "Compares the data of the files aswell.";
         private const string CompareDataUnheckedToolTipData = "Doesn't compare the data of the files.";
@@ -21,6 +20,8 @@ namespace DirectoriesCompare
         private const string NotFoundToolTipDataFormat = "Couldn't find {0} files from the first directory in the second.\r\nCouldn't find {1} files from the second directory in the first.";
         #endregion ToolTip Consts
         #region TextBox Consts
+        private const string FirstSummaryText = "First Directory Summary Output...";
+        private const string SecondSummaryText = "Second Directory Summary Output...";
         private const string SummaryFormat = "{0}:\r\nFiles - {1}\r\nSub Directories - {2}\r\nSize - {3} {4}";
         private const string FoundOutputFormat = "Found in both directories:\r\n{0}- ";
         private const string NotFoundOutputFormat = "Not found in first directory:\r\n- {0}\r\n\r\nNot found in second directory:\r\n- {1}";
@@ -28,10 +29,13 @@ namespace DirectoriesCompare
         private const string ConclustionNotAllExists = "{0} files from the first directory are missing in the second directory.\r\n{1} files from the second directory are missing in the first directory.";
         private readonly string[] ByteMagnitude = { "B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
         #endregion TextBox Consts
+        private const int BytesToRead = sizeof(Int64);
+        private readonly Brush brush = new SolidColorBrush(Color.FromRgb(105,105,105));
         #endregion Consts
 
         System.Windows.Forms.FolderBrowserDialog folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
         private Dictionary<Button, Tuple<TextBox, TextBox>> BrowseButtonMatchingData = new Dictionary<Button, Tuple<TextBox, TextBox>>();
+        private Dictionary<TextBox, Tuple<TextBox, string>> PathMatchingSummary = new Dictionary<TextBox, Tuple<TextBox, string>>();
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
         public MainWindow()
@@ -43,7 +47,34 @@ namespace DirectoriesCompare
         {
             BrowseButtonMatchingData.Add(FirstDirectoryBrowse, new Tuple<TextBox, TextBox>(FirstDirectoryPath, FirstSummary));
             BrowseButtonMatchingData.Add(SecondDirectoryBrowse, new Tuple<TextBox, TextBox>(SecondDirectoryPath, SecondSummary));
+            PathMatchingSummary.Add(FirstDirectoryPath, new Tuple<TextBox, string>(FirstSummary, FirstSummaryText));
+            PathMatchingSummary.Add(SecondDirectoryPath, new Tuple<TextBox, string>(SecondSummary, SecondSummaryText));
             folderBrowser.RootFolder = Environment.SpecialFolder.Desktop;
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox pathTB = (TextBox)sender;
+            TextBox summary = PathMatchingSummary[pathTB].Item1;
+            string summaryText = PathMatchingSummary[pathTB].Item2;
+            if (Directory.Exists(pathTB.Text))
+            {
+                long sizeInBytes = 0;
+                int filesCount = 0, subDirectoriesCount = 0;
+                GetStats(pathTB.Text, ref sizeInBytes, ref subDirectoriesCount, ref filesCount);
+                string magnitude = String.Empty;
+                double sizeInMagnitude = ShrinkByteMagnitude(sizeInBytes, out magnitude);
+                summary.Text = String.Format(SummaryFormat, pathTB.Text, filesCount, subDirectoriesCount, sizeInMagnitude, magnitude);
+                summary.Foreground = Brushes.Black;
+                summary.ToolTip = summary.Text;
+            }
+            else
+            {
+                summary.Text = summaryText;
+                summary.Foreground = brush;
+                summary.ToolTip = summary.Text;
+
+            }
         }
 
         private void Browse_Click(object sender, RoutedEventArgs e)
@@ -119,25 +150,20 @@ namespace DirectoriesCompare
             ShowComparison(firstDirectoryTree, secondDirectoryTree, FirstDirectoryPath.Text, SecondDirectoryPath.Text, IsChecked(CompareFilesData), IsChecked(CompareStructure));
         }
 
-        private bool InputCheck(string p1, string p2)
+        private bool InputCheck(string firstDirectory, string secondDirectory)
         {
-            if (String.IsNullOrWhiteSpace(FirstDirectoryPath.Text) || String.IsNullOrWhiteSpace(SecondDirectoryPath.Text))
+            if (String.IsNullOrWhiteSpace(firstDirectory) || String.IsNullOrWhiteSpace(secondDirectory))
             {
                 MessageBox.Show("Empty folder path");
                 return false;
             }
 
-            if (!(CheckDirectory(FirstDirectoryPath.Text)))
+            if (!(CheckDirectory(firstDirectory)) || !(CheckDirectory(secondDirectory)))
             {
                 return false;
             }
 
-            if (!(CheckDirectory(SecondDirectoryPath.Text)))
-            {
-                return false;
-            }
-
-            if (string.Equals(FirstDirectoryPath.Text, SecondDirectoryPath.Text, StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(firstDirectory, secondDirectory, StringComparison.OrdinalIgnoreCase))
             {
                 MessageBox.Show("Please enter different directory paths.");
                 return false;
@@ -300,6 +326,7 @@ namespace DirectoriesCompare
             else
                 CompareStructure.ToolTip = CompareStructureUnheckedToolTipData;
         }
+        
         private void CompareFilesData_Changed(object sender, RoutedEventArgs e)
         {
             if (IsChecked(CompareFilesData))

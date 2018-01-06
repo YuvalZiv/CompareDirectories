@@ -6,10 +6,10 @@
     <Grid Margin="-2,0,2,0">
         <TextBox Name="FirstDirectoryPath" HorizontalAlignment="Left"
                  Height="20" TextWrapping="Wrap" VerticalAlignment="Top"
-                 Width="367" Margin="10,10,0,0"/>
+                 Width="367" Margin="10,10,0,0" TextChanged="TextBox_TextChanged"/>
         <TextBox Name="SecondDirectoryPath" HorizontalAlignment="Left"
                  Height="20" TextWrapping="Wrap" VerticalAlignment="Top"
-                 Width="367" Margin="10,36,0,0"/>
+                 Width="367" Margin="10,36,0,0" TextChanged="TextBox_TextChanged"/>
         <TextBox Name="Found" HorizontalAlignment="Left" Height="166" TextWrapping="Wrap"
                  Text="Found Output..." VerticalAlignment="Top" Width="148"
                  Margin="10,82,0,0" IsReadOnly="True" VerticalScrollBarVisibility="Auto"
